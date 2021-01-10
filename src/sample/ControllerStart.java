@@ -1,10 +1,15 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-//import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 //import java.awt.event.ActionEvent;
 
 public class ControllerStart {
@@ -33,7 +38,7 @@ public class ControllerStart {
 
     @FXML
     private void openHelpMenu(ActionEvent event) {
-        //exitProgram(0);
+        goToHelp();
     }
 
     @FXML
@@ -42,19 +47,43 @@ public class ControllerStart {
     }
 
 
-    @FXML
-    public String exitProgram(int exit_status) {
-        String controlSentence;
+
+    public void exitProgram(int exit_status) {
         if (exit_status == 0) {
-            controlSentence = "Game exited normally";
+            System.out.println("Game exited normally");
             System.exit(exit_status);
         }
         else {
-            controlSentence = "Error: Game closed irregularly";
+            System.out.println("Error: Game closed irregularly");
             System.exit(exit_status);
         }
-        return controlSentence;
     }
 
-}
+    public void goToHelp() {
+        try {
+            setupSceneHelp();
+            /*Stage helpPageStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("help.fxml"));
+
+            helpPageStage.setTitle("Craftsmanship");
+            helpPageStage.setScene(new Scene(root, 800, 600));
+            helpPageStage.show();*/
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void setupSceneHelp() throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
+        Stage primaryStage = (Stage) buttonHelp.getScene().getWindow();
+        primaryStage.getScene().setRoot(newRoot);
+
+
+    }
+
+    }
+
+
 
