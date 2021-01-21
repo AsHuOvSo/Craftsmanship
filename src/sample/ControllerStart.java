@@ -31,8 +31,6 @@ public class ControllerStart {
 
     @FXML
     private void exitGame(ActionEvent event) {
-        //Stage stage = (Stage) buttonExit.getScene().getWindow();
-        //stage.close();
         exitProgram(0);
     }
 
@@ -43,7 +41,7 @@ public class ControllerStart {
 
     @FXML
     private void startPlayGame(ActionEvent event) {
-        //exitProgram(0);
+        goToCharacterCreation();
     }
 
 
@@ -62,12 +60,6 @@ public class ControllerStart {
     public void goToHelp() {
         try {
             setupSceneHelp();
-            /*Stage helpPageStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("help.fxml"));
-
-            helpPageStage.setTitle("Craftsmanship");
-            helpPageStage.setScene(new Scene(root, 800, 600));
-            helpPageStage.show();*/
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +71,22 @@ public class ControllerStart {
         Parent newRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
         Stage primaryStage = (Stage) buttonHelp.getScene().getWindow();
         primaryStage.getScene().setRoot(newRoot);
+    }
 
+    public void goToCharacterCreation() {
+        try {
+            setupCharacterCreation();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void setupCharacterCreation() throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("characterCustom.fxml"));
+        Stage primaryStage = (Stage) buttonPlay.getScene().getWindow();
+        primaryStage.getScene().setRoot(newRoot);
 
     }
 
