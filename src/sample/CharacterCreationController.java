@@ -5,10 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class CharacterCreationController {
@@ -81,11 +84,17 @@ public class CharacterCreationController {
 
     @FXML
     private Button buttonTopDown;
+
+    public CharacterCreationController() throws IOException {
+    }
+
     /*-------------------------------------------------Button Event----------------------------------------------------*/
     @FXML
     void DecreaseBottom(ActionEvent event) {
         try {
             DecreaseBottomNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -96,7 +105,9 @@ public class CharacterCreationController {
     @FXML
     void DecreaseCraft(ActionEvent event) {
         try {
-
+            DecreaseCraftNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -107,6 +118,8 @@ public class CharacterCreationController {
     void DecreaseEyeColor(ActionEvent event) {
         try {
             DecreaseEyeColorNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -117,6 +130,8 @@ public class CharacterCreationController {
     void DecreaseHairColor(ActionEvent event) {
         try {
             DecreaseHairColorNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -127,6 +142,8 @@ public class CharacterCreationController {
     void DecreaseHairStyle(ActionEvent event) {
         try {
             DecreaseHairStyleNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -137,6 +154,8 @@ public class CharacterCreationController {
     void DecreaseShoes(ActionEvent event) {
         try {
             DecreaseShoesNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -147,6 +166,8 @@ public class CharacterCreationController {
     void DecreaseSkinColor(ActionEvent event) {
         try {
             DecreaseSkinColorNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -156,7 +177,9 @@ public class CharacterCreationController {
     @FXML
     void DecreaseStudio(ActionEvent event) {
         try {
-
+            DecreaseStudioNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -167,6 +190,8 @@ public class CharacterCreationController {
     void DecreaseTop(ActionEvent event) {
         try {
             DecreaseTopNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -177,6 +202,8 @@ public class CharacterCreationController {
     void IncreaseBottom(ActionEvent event) {
         try {
             IncreaseBottomNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -186,7 +213,9 @@ public class CharacterCreationController {
     @FXML
     void IncreaseCraft(ActionEvent event) {
         try {
-
+            IncreaseCraftNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -197,6 +226,8 @@ public class CharacterCreationController {
     void IncreaseEyeColor(ActionEvent event) {
         try {
             IncreaseEyeColorNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -207,6 +238,8 @@ public class CharacterCreationController {
     void IncreaseHairColor(ActionEvent event) {
         try {
             IncreaseHairColorNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -217,6 +250,8 @@ public class CharacterCreationController {
     void IncreaseHairStyle(ActionEvent event) {
         try {
             IncreaseHairStyleNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -227,6 +262,8 @@ public class CharacterCreationController {
     void IncreaseShoes(ActionEvent event) {
         try {
             IncreaseShoesNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -237,6 +274,8 @@ public class CharacterCreationController {
     void IncreaseSkinColor(ActionEvent event) {
         try {
             IncreaseSkinColorNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -246,7 +285,9 @@ public class CharacterCreationController {
     @FXML
     void IncreaseStudio(ActionEvent event) {
         try {
-
+            IncreaseStudioNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -257,6 +298,8 @@ public class CharacterCreationController {
     void IncreaseTop(ActionEvent event) {
         try {
             IncreaseTopNumber();
+            UpdateSkinColor();
+            DisplayMatchingPicture();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -478,14 +521,288 @@ public class CharacterCreationController {
 
 
     public void UpdateSkinColor() {
-        
+        switch(skinColorNumber) {
+            case 01:
+                characterNumber = "01";
+                UpdateHairColor();
+                break;
+            default:
+                System.out.println("Error: Skin color number doesn't match");
+        }
     }
 
+    public void UpdateHairColor() {
+        switch(hairColorNumber) {
+            case 01:
+                characterNumber += "01";
+                UpdateHairStyle();
+                break;
+            case 02:
+                characterNumber += "02";
+                UpdateHairStyle();
+                break;
+            default:
+                System.out.println("Error: Hair color number doesn't match");
+        }
+    }
+
+    public void UpdateHairStyle() {
+        switch(hairStyleNumber) {
+            case 01:
+                characterNumber += "01";
+                UpdateEyeColor();
+                break;
+            default:
+                System.out.println("Error: Hair style number doesn't match");
+        }
+    }
+
+    public void UpdateEyeColor() {
+        switch(eyeColorNumber) {
+            case 01:
+                characterNumber += "01";
+                UpdateTopNumber();
+                break;
+            case 02:
+                characterNumber += "02";
+                UpdateTopNumber();
+                break;
+            case 03:
+                characterNumber += "03";
+                UpdateTopNumber();
+                break;
+            default:
+                System.out.println("Error: Eye color number doesn't match");
+        }
+    }
+
+    public void UpdateTopNumber() {
+        switch(topNumber) {
+            case 01:
+                characterNumber += "01";
+                UpdateBottomNumber();
+                break;
+            case 02:
+                characterNumber += "02";
+                UpdateBottomNumber();
+                break;
+            default:
+                System.out.println("Error: Top number doesn't match");
+        }
+    }
+
+    public void UpdateBottomNumber() {
+        switch(bottomNumber) {
+            case 01:
+                characterNumber += "01";
+                UpdateShoesNumber();
+                break;
+            case 02:
+                characterNumber += "02";
+                UpdateShoesNumber();
+                break;
+            default:
+                System.out.println("Error: Bottom number doesn't match");
+        }
+    }
+
+    public void UpdateShoesNumber() {
+        switch(shoesNumber) {
+            case 01:
+                characterNumber += "01";
+                UpdateCraftNumber();
+                break;
+            case 02:
+                characterNumber += "02";
+                UpdateCraftNumber();
+                break;
+            default:
+                System.out.println("Error: Shoes number doesn't match");
+        }
+    }
+
+    public void UpdateCraftNumber() {
+        switch(craftNumber) {
+            case 01:
+                characterNumber += "01";
+                UpdateStudioNumber();
+                break;
+            default:
+                System.out.println("Error: Craft number doesn't match");
+        }
+    }
+
+    public void UpdateStudioNumber() {
+        switch(studioNumber) {
+            case 01:
+                characterNumber += "01";
+                break;
+            default:
+                System.out.println("Error: Studio number doesn't match");
+        }
+    }
+
+    /*--------------------------------------------Pictures to Display---------------------------------------------*/
+
+    public void DisplayMatchingPicture() {
+        switch(characterNumber) {
+            case "010101010101010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101010101.png"));
+                break;
+            case "010101010101020101":
+                imageViewCharacter.setImage(new Image("/src/sample/resources/images/F01010101010102.png"));
+                break;
+            case "010101010102010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101010201.png"));
+                break;
+            case "010101010102020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101010202.png"));
+                break;
+            case "010101010201010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020101.png"));
+                break;
+            case "010101010201020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020102.png"));
+                break;
+            case "010101010202010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020201.png"));
+                break;
+            case "010101010202020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020202.png"));
+                break;
+            case "010101020101010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010101.png"));
+                break;
+            case "010101020101020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010102.png"));
+                break;
+            case "010101020102010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010201.png"));
+                break;
+            case "010101020102020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010202.png"));
+                break;
+            case "010101020201010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020101.png"));
+                break;
+            case "010101020201020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020102.png"));
+                break;
+            case "010101020202010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020201.png"));
+                break;
+            case "010101020202020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020202.png"));
+                break;
+            case "010101030101010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010101.png"));
+                break;
+            case "010101030101020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010102.png"));
+                break;
+            case "010101030102010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010201.png"));
+                break;
+            case "010101030102020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010202.png"));
+                break;
+            case "010101030201010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020101.png"));
+                break;
+            case "010101030201020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020102.png"));
+                break;
+            case "010101030202010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020201.png"));
+                break;
+            case "010101030202020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020202.png"));
+                break;
+            case "010201010101010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010101.png"));
+                break;
+            case "010201010101020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010102.png"));
+                break;
+            case "010201010102010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010201.png"));
+                break;
+            case "010201010102020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010202.png"));
+                break;
+            case "010201010201010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020101.png"));
+                break;
+            case "010201010201020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020102.png"));
+                break;
+            case "010201010202010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020201.png"));
+                break;
+            case "010201010202020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020202.png"));
+                break;
+            case "010201020101010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010101.png"));
+                break;
+            case "010201020101020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010102.png"));
+                break;
+            case "010201020102010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010201.png"));
+                break;
+            case "010201020102020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010202.png"));
+                break;
+            case "010201020201010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020101.png"));
+                break;
+            case "010201020201020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020102.png"));
+                break;
+            case "010201020202010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020201.png"));
+                break;
+            case "010201020202020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020202.png"));
+                break;
+            case "010201030101010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010101.png"));
+                break;
+            case "010201030101020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010102.png"));
+                break;
+            case "010201030102010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010201.png"));
+                break;
+            case "010201030102020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010202.png"));
+                break;
+            case "010201030201010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020101.png"));
+                break;
+            case "010201030201020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020102.png"));
+                break;
+            case "010201030202010101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020201.png"));
+                break;
+            case "010201030202020101":
+                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020202.png"));
+                break;
+            default:
+                System.out.println("Error: characterNumber doesn't match image ID");
+        }
+    }
 
     /*--------------------------------------------------Variables-------------------------------------------------*/
 
     int skinColorNumber = 01, hairColorNumber = 01, hairStyleNumber = 01, eyeColorNumber = 01, topNumber = 01,
     bottomNumber = 01, shoesNumber = 01, craftNumber = 01, studioNumber = 01;
+    String characterNumber;
+
+
+
 
 
 }

@@ -8,8 +8,8 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CharacterCreationController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="411.0" fitWidth="241.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField layoutX="14.0" layoutY="438.0" prefHeight="44.0" prefWidth="241.0" />
+      <ImageView fx:id="imageViewCharacter" fitHeight="411.0" fitWidth="241.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="textFieldEnterName" layoutX="14.0" layoutY="438.0" prefHeight="44.0" prefWidth="241.0" />
       <Button fx:id="buttonCCBack" layoutX="14.0" layoutY="521.0" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="59.0" prefWidth="241.0" text="Back" />
       <Button fx:id="buttonCCExit" layoutX="280.0" layoutY="521.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="59.0" prefWidth="241.0" text="Exit" />
       <Button fx:id="buttonCCPlay" layoutX="545.0" layoutY="521.0" mnemonicParsing="false" onAction="#startGame" prefHeight="59.0" prefWidth="241.0" text="Play" />
@@ -17,29 +17,32 @@
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="573.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="573.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="566.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="579.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="733.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="733.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="414.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="735.0" layoutY="414.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="467.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="735.0" layoutY="470.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="733.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="733.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="92.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="733.0" layoutY="92.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="733.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="194.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="733.0" layoutY="194.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
-      <Button layoutX="579.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonBottomDown" layoutX="579.0" layoutY="308.0" mnemonicParsing="false" onAction="#DecreaseBottom" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonBottomUp" layoutX="735.0" layoutY="308.0" mnemonicParsing="false" onAction="#IncreaseBottom" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonShoesDown" layoutX="579.0" layoutY="367.0" mnemonicParsing="false" onAction="#DecreaseShoes" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonShoesUp" layoutX="735.0" layoutY="367.0" mnemonicParsing="false" onAction="#IncreaseShoes" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonCraftDown" layoutX="579.0" layoutY="413.0" mnemonicParsing="false" onAction="#DecreaseCraft" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonCraftUp" layoutX="735.0" layoutY="413.0" mnemonicParsing="false" onAction="#IncreaseCraft" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonStudioDown" layoutX="579.0" layoutY="467.0" mnemonicParsing="false" onAction="#DecreaseStudio" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonStudioUp" layoutX="735.0" layoutY="467.0" mnemonicParsing="false" onAction="#IncreaseStudio" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonTopUp" layoutX="735.0" layoutY="254.0" mnemonicParsing="false" onAction="#IncreaseTop" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonSkinColorDown" layoutX="579.0" layoutY="32.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DecreaseSkinColor" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Button>
+      <Button fx:id="buttonSkinColorUp" graphicTextGap="0.0" layoutX="735.0" layoutY="32.0" mnemonicParsing="false" onAction="#IncreaseSkinColor" prefHeight="25.0" prefWidth="24.0" />
+      <Button fx:id="buttonHairColorDown" layoutX="579.0" layoutY="92.0" mnemonicParsing="false" onAction="#DecreaseHairColor" prefHeight="25.0" prefWidth="24.0" />
+      <Button fx:id="buttonHairColorUp" layoutX="735.0" layoutY="92.0" mnemonicParsing="false" onAction="#IncreaseHairColor" prefHeight="25.0" prefWidth="24.0" />
+      <Button fx:id="buttonHairStyleDown" layoutX="579.0" layoutY="144.0" mnemonicParsing="false" onAction="#DecreaseHairStyle" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonHairStyleUp" layoutX="735.0" layoutY="144.0" mnemonicParsing="false" onAction="#IncreaseHairStyle" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonEyeColorDown" layoutX="579.0" layoutY="194.0" mnemonicParsing="false" onAction="#DecreaseEyeColor" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonEyeColorUp" layoutX="735.0" layoutY="194.0" mnemonicParsing="false" onAction="#IncreaseEyeColor" prefHeight="25.0" prefWidth="24.0" text="Button" />
+      <Button fx:id="buttonTopDown" layoutX="579.0" layoutY="254.0" mnemonicParsing="false" onAction="#DecreaseTop" prefHeight="25.0" prefWidth="24.0" text="Button" />
    </children>
 </Pane>
