@@ -1,7 +1,7 @@
 package sample;
 
 public class Game {
-    public void StartGame(int CharacterCode) {
+    public void StartGame() {
 
     }
 

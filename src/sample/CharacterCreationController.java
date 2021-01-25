@@ -323,7 +323,7 @@ public class CharacterCreationController {
 
     @FXML
     void startGame(ActionEvent event) {
-
+        StartGame();
     }
     /*---------------------------------------------------Functions-----------------------------------------------------*/
 
@@ -351,6 +351,25 @@ public class CharacterCreationController {
     public void setupMainMenu() throws IOException {
         Parent newRoot = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Stage primaryStage = (Stage) buttonCCBack.getScene().getWindow();
+        primaryStage.getScene().setRoot(newRoot);
+    }
+
+    public void StartGame() {
+        try {
+            String playerName = textFieldEnterName.getText();
+            Character player = new Character(characterNumber, playerName);
+            setupGameStage();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void setupGameStage() throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("apartment.fxml"));
+        Stage primaryStage = (Stage) buttonCCPlay.getScene().getWindow();
         primaryStage.getScene().setRoot(newRoot);
     }
 
@@ -521,6 +540,7 @@ public class CharacterCreationController {
 
 
     public void UpdateSkinColor() {
+        characterNumber = "";
         switch(skinColorNumber) {
             case 01:
                 characterNumber = "01";
@@ -647,13 +667,13 @@ public class CharacterCreationController {
     public void DisplayMatchingPicture() {
         switch(characterNumber) {
             case "010101010101010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101010101.png"));
+                imageViewCharacter.setImage(new Image(getClass().getResource("src/sample/resources/images/F01010101010101.png").toExternalForm()));
                 break;
             case "010101010101020101":
-                imageViewCharacter.setImage(new Image("/src/sample/resources/images/F01010101010102.png"));
+                imageViewCharacter.setImage(new Image(getClass().getResource("@src/sample/resources/images/F01010101010102.png").toExternalForm()));
                 break;
             case "010101010102010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101010201.png"));
+                imageViewCharacter.setImage(new Image("@src/sample/resources/images/F01010101010201.png"));
                 break;
             case "010101010102020101":
                 imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101010202.png"));
