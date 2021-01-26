@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerStart">
    <children>
-      <ImageView fx:id="imageViewBackground" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageViewTitle" fitHeight="150.0" fitWidth="600.0" layoutX="100.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="buttonPlay" layoutX="302.0" layoutY="273.0" mnemonicParsing="false" onAction="#startPlayGame" prefHeight="70.0" prefWidth="210.0" text="Play" />
-      <Button fx:id="buttonHelp" layoutX="302.0" layoutY="370.0" mnemonicParsing="false" onAction="#openHelpMenu" prefHeight="70.0" prefWidth="210.0" text="Help" />
-      <Button fx:id="buttonExit" layoutX="302.0" layoutY="465.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="70.0" prefWidth="210.0" text="Exit" />
+      <ImageView fx:id="imageViewBackground" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/images/Background0000.png" />
+         </image></ImageView>
+      <ImageView fx:id="imageViewTitle" fitHeight="150.0" fitWidth="600.0" layoutX="100.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/images/Titleblue0000.png" />
+         </image></ImageView>
+      <Button fx:id="buttonPlay" layoutX="294.0" layoutY="272.0" mnemonicParsing="false" onAction="#startPlayGame" prefHeight="70.0" prefWidth="210.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/images/PlayButton.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="buttonHelp" layoutX="294.0" layoutY="371.0" mnemonicParsing="false" onAction="#openHelpMenu" prefHeight="70.0" prefWidth="210.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/images/HelpButton0000.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="buttonExit" layoutX="294.0" layoutY="466.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="70.0" prefWidth="210.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/images/ExitButton.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </Pane>

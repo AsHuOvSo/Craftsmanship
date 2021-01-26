@@ -117,7 +117,8 @@ public class GameController {
 
     @FXML
     void OpenStorage(ActionEvent event) {
-
+        RestoreMaterial(10);
+        System.out.println(materialCount);
     }
 
     @FXML
