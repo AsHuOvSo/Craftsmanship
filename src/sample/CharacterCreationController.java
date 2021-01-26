@@ -9,12 +9,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class CharacterCreationController {
+
+
+    /*--------------------------------------------------Variables-------------------------------------------------*/
+
+    int skinColorNumber = 1, hairColorNumber = 1, hairStyleNumber = 1, eyeColorNumber = 1, topNumber = 1,
+            bottomNumber = 1, shoesNumber = 1, craftNumber = 1, studioNumber = 1;
+    String characterNumber;
+
+    /*-----------------------------------------------------FXML---------------------------------------------------*/
 
     @FXML
     private ImageView imageViewCharacter;
@@ -377,164 +385,165 @@ public class CharacterCreationController {
 
     }
     public void IncreaseBottomNumber() {
-        if(bottomNumber != 01) {
-            bottomNumber++;
+        if(!(bottomNumber == 1)) {
+            bottomNumber = bottomNumber + 1;
+            System.out.println(bottomNumber);
         }
         else {
-            bottomNumber = 01;
+            bottomNumber = 1;
         }
     }
 
     public void DecreaseBottomNumber() {
-        if(bottomNumber !=02) {
+        if(bottomNumber !=2) {
             bottomNumber--;
         }
         else {
-            bottomNumber = 02;
+            bottomNumber = 2;
         }
     }
 
     public void IncreaseTopNumber() {
-        if(topNumber != 01) {
+        if(topNumber != 1) {
             topNumber++;
         }
         else {
-            topNumber = 01;
+            topNumber = 1;
         }
     }
 
     public void DecreaseTopNumber() {
-        if(topNumber != 02) {
+        if(topNumber != 2) {
             topNumber--;
         }
         else {
-            topNumber = 02;
+            topNumber = 2;
         }
     }
 
     public void IncreaseSkinColorNumber() {
-        if(skinColorNumber != 01) {
+        if(skinColorNumber != 1) {
             skinColorNumber++;
         }
         else {
-            skinColorNumber = 01;
+            skinColorNumber = 1;
         }
     }
 
     public void DecreaseSkinColorNumber() {
-        if(skinColorNumber != 02) {
+        if(skinColorNumber != 2) {
             skinColorNumber--;
         }
         else {
-            skinColorNumber = 02;
+            skinColorNumber = 2;
         }
     }
 
     public void IncreaseHairColorNumber() {
-        if(hairColorNumber != 01){
+        if(hairColorNumber != 1){
             hairColorNumber++;
         }
         else {
-            hairColorNumber = 01;
+            hairColorNumber = 1;
         }
     }
 
     public void DecreaseHairColorNumber() {
-        if(hairColorNumber != 02) {
+        if(hairColorNumber != 2) {
             hairColorNumber--;
         }
         else {
-            hairColorNumber = 02;
+            hairColorNumber = 2;
         }
     }
 
     public void IncreaseHairStyleNumber() {
-        if(hairStyleNumber != 01) {
+        if(hairStyleNumber != 1) {
             hairStyleNumber++;
         }
         else {
-            hairStyleNumber = 01;
+            hairStyleNumber = 1;
         }
     }
 
     public void DecreaseHairStyleNumber() {
-        if(hairStyleNumber != 02) {
+        if(hairStyleNumber != 2) {
             hairStyleNumber--;
         }
         else {
-            hairStyleNumber = 02;
+            hairStyleNumber = 2;
         }
     }
 
     public void IncreaseEyeColorNumber() {
-        if(eyeColorNumber != 01) {
+        if(eyeColorNumber != 1) {
             eyeColorNumber++;
         }
         else {
-            eyeColorNumber = 01;
+            eyeColorNumber = 1;
         }
     }
 
     public void DecreaseEyeColorNumber() {
-        if(eyeColorNumber != 03) {
+        if(eyeColorNumber != 3) {
             eyeColorNumber--;
         }
         else {
-            eyeColorNumber = 03;
+            eyeColorNumber = 3;
         }
     }
 
     public void IncreaseShoesNumber() {
-        if(shoesNumber != 01) {
+        if(shoesNumber != 1) {
             shoesNumber++;
         }
         else {
-            shoesNumber = 01;
+            shoesNumber = 1;
         }
     }
 
     public void DecreaseShoesNumber() {
-        if(shoesNumber != 02) {
+        if(shoesNumber != 2) {
             shoesNumber--;
         }
         else {
-            shoesNumber = 02;
+            shoesNumber = 2;
         }
     }
 
     public void IncreaseCraftNumber() {
-        if(craftNumber != 01) {
+        if(craftNumber != 1) {
             craftNumber++;
         }
         else {
-            craftNumber = 01;
+            craftNumber = 1;
         }
     }
 
     public void DecreaseCraftNumber() {
-        if(craftNumber != 01) {
+        if(craftNumber != 1) {
             craftNumber--;
         }
         else {
-            craftNumber = 01;
+            craftNumber = 1;
         }
     }
 
     public void IncreaseStudioNumber() {
-        if(studioNumber != 01) {
+        if(studioNumber != 1) {
             studioNumber++;
         }
         else {
-            studioNumber = 01;
+            studioNumber = 1;
         }
     }
 
     public void DecreaseStudioNumber() {
-        if(studioNumber != 01) {
+        if(studioNumber != 1) {
             studioNumber--;
         }
         else {
-            studioNumber = 01;
+            studioNumber = 1;
         }
     }
 
@@ -542,7 +551,7 @@ public class CharacterCreationController {
     public void UpdateSkinColor() {
         characterNumber = "";
         switch(skinColorNumber) {
-            case 01:
+            case 1:
                 characterNumber = "01";
                 UpdateHairColor();
                 break;
@@ -553,11 +562,11 @@ public class CharacterCreationController {
 
     public void UpdateHairColor() {
         switch(hairColorNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 UpdateHairStyle();
                 break;
-            case 02:
+            case 2:
                 characterNumber += "02";
                 UpdateHairStyle();
                 break;
@@ -568,7 +577,7 @@ public class CharacterCreationController {
 
     public void UpdateHairStyle() {
         switch(hairStyleNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 UpdateEyeColor();
                 break;
@@ -579,15 +588,15 @@ public class CharacterCreationController {
 
     public void UpdateEyeColor() {
         switch(eyeColorNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 UpdateTopNumber();
                 break;
-            case 02:
+            case 2:
                 characterNumber += "02";
                 UpdateTopNumber();
                 break;
-            case 03:
+            case 3:
                 characterNumber += "03";
                 UpdateTopNumber();
                 break;
@@ -598,11 +607,11 @@ public class CharacterCreationController {
 
     public void UpdateTopNumber() {
         switch(topNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 UpdateBottomNumber();
                 break;
-            case 02:
+            case 2:
                 characterNumber += "02";
                 UpdateBottomNumber();
                 break;
@@ -613,11 +622,11 @@ public class CharacterCreationController {
 
     public void UpdateBottomNumber() {
         switch(bottomNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 UpdateShoesNumber();
                 break;
-            case 02:
+            case 2:
                 characterNumber += "02";
                 UpdateShoesNumber();
                 break;
@@ -628,11 +637,11 @@ public class CharacterCreationController {
 
     public void UpdateShoesNumber() {
         switch(shoesNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 UpdateCraftNumber();
                 break;
-            case 02:
+            case 2:
                 characterNumber += "02";
                 UpdateCraftNumber();
                 break;
@@ -643,7 +652,7 @@ public class CharacterCreationController {
 
     public void UpdateCraftNumber() {
         switch(craftNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 UpdateStudioNumber();
                 break;
@@ -654,7 +663,7 @@ public class CharacterCreationController {
 
     public void UpdateStudioNumber() {
         switch(studioNumber) {
-            case 01:
+            case 1:
                 characterNumber += "01";
                 break;
             default:
@@ -665,161 +674,254 @@ public class CharacterCreationController {
     /*--------------------------------------------Pictures to Display---------------------------------------------*/
 
     public void DisplayMatchingPicture() {
+        File file;
+        Image image;
         switch(characterNumber) {
             case "010101010101010101":
-                imageViewCharacter.setImage(new Image(getClass().getResource("src/sample/resources/images/F01010101010101.png").toExternalForm()));
+                file = new File("src/sample/resources/images/F01010101010101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101010101020101":
-                imageViewCharacter.setImage(new Image(getClass().getResource("@src/sample/resources/images/F01010101010102.png").toExternalForm()));
+                file = new File("src/sample/resources/images/F01010101010102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101010102010101":
-                imageViewCharacter.setImage(new Image("@src/sample/resources/images/F01010101010201.png"));
+                file = new File("src/sample/resources/images/F01010101010201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101010102020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101010202.png"));
+                file = new File("src/sample/resources/images/F01010101010202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101010201010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020101.png"));
+                file = new File("src/sample/resources/images/F01010101020101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101010201020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020102.png"));
+                file = new File("src/sample/resources/images/F01010101020102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101010202010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020201.png"));
+                file = new File("src/sample/resources/images/F01010101020201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101010202020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010101020202.png"));
+                file = new File("src/sample/resources/images/F01010101020202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020101010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010101.png"));
+                file = new File("src/sample/resources/images/F01010102010101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020101020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010102.png"));
+                file = new File("src/sample/resources/images/F01010102010102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020102010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010201.png"));
+                file = new File("src/sample/resources/images/F01010102010201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020102020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102010202.png"));
+                file = new File("src/sample/resources/images/F01010102010202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020201010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020101.png"));
+                file = new File("src/sample/resources/images/F01010102020101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020201020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020102.png"));
+                file = new File("src/sample/resources/images/F01010102020102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020202010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020201.png"));
+                file = new File("src/sample/resources/images/F01010102020201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101020202020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010102020202.png"));
+                file = new File("src/sample/resources/images/F01010102020202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030101010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010101.png"));
+                file = new File("src/sample/resources/images/F01010103010101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030101020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010102.png"));
+                file = new File("src/sample/resources/images/F01010103010102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030102010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010201.png"));
+                file = new File("src/sample/resources/images/F01010103010201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030102020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103010202.png"));
+                file = new File("src/sample/resources/images/F01010103010202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030201010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020101.png"));
+                file = new File("src/sample/resources/images/F01010103020101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030201020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020102.png"));
+                file = new File("src/sample/resources/images/F01010103020102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030202010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020201.png"));
+                file = new File("src/sample/resources/images/F01010103020201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010101030202020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01010103020202.png"));
+                file = new File("src/sample/resources/images/F01010103020202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010101010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010101.png"));
+                file = new File("src/sample/resources/images/F01020101010101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010101020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010102.png"));
+                file = new File("src/sample/resources/images/F01020101010102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010102010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010201.png"));
+                file = new File("src/sample/resources/images/F01020101010201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010102020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101010202.png"));
+                file = new File("src/sample/resources/images/F01020101010202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010201010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020101.png"));
+                file = new File("src/sample/resources/images/F01020101020101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010201020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020102.png"));
+                file = new File("src/sample/resources/images/F01020101020102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010202010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020201.png"));
+                file = new File("src/sample/resources/images/F01020101020201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201010202020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020101020202.png"));
+                file = new File("src/sample/resources/images/F01020101020202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020101010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010101.png"));
+                file = new File("src/sample/resources/images/F01020102010101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020101020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010102.png"));
+                file = new File("src/sample/resources/images/F01020102010102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020102010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010201.png"));
+                file = new File("src/sample/resources/images/F01020102010201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020102020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102010202.png"));
+                file = new File("src/sample/resources/images/F01020102010202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020201010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020101.png"));
+                file = new File("src/sample/resources/images/F01020102020101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020201020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020102.png"));
+                file = new File("src/sample/resources/images/F01020102020102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020202010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020201.png"));
+                file = new File("src/sample/resources/images/F01020102020201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201020202020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020102020202.png"));
+                file = new File("src/sample/resources/images/F01020102020202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030101010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010101.png"));
+                file = new File("src/sample/resources/images/F01020103010101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030101020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010102.png"));
+                file = new File("src/sample/resources/images/F01020103010102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030102010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010201.png"));
+                file = new File("src/sample/resources/images/F01020103010201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030102020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103010202.png"));
+                file = new File("src/sample/resources/images/F01020103010202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030201010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020101.png"));
+                file = new File("src/sample/resources/images/F01020103020101.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030201020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020102.png"));
+                file = new File("src/sample/resources/images/F01020103020102.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030202010101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020201.png"));
+                file = new File("src/sample/resources/images/F01020103020201.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             case "010201030202020101":
-                imageViewCharacter.setImage(new Image("src/sample/resources/images/F01020103020202.png"));
+                file = new File("src/sample/resources/images/F01020103020202.png");
+                image = new Image(file.toURI().toString());
+                imageViewCharacter.setImage(image);
                 break;
             default:
                 System.out.println("Error: characterNumber doesn't match image ID");
         }
     }
 
-    /*--------------------------------------------------Variables-------------------------------------------------*/
-
-    int skinColorNumber = 01, hairColorNumber = 01, hairStyleNumber = 01, eyeColorNumber = 01, topNumber = 01,
-    bottomNumber = 01, shoesNumber = 01, craftNumber = 01, studioNumber = 01;
-    String characterNumber;
 
 
 

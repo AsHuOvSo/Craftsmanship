@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imageViewEnergy" fitHeight="44.0" fitWidth="647.0" layoutX="14.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
@@ -51,5 +51,10 @@
       <ImageView fitHeight="318.0" fitWidth="112.0" layoutX="14.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="164.0" fitWidth="206.0" layoutX="138.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="76.0" fitWidth="82.0" layoutX="200.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageViewCharacter" fitHeight="141.0" fitWidth="70.0" layoutX="206.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/images/F01010101010101.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

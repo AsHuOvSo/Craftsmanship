@@ -2,13 +2,48 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import sample.sewing.Cloth;
 import sample.sewing.Product;
 
-public class GameController {
+import java.io.File;
+import java.io.IOException;
 
+public class GameController {
+    /*----------------------------------------Variables------------------------------------*/
+
+    Product ragDoll = new Product("Rag Doll", 1, 1, 10.0);
+    Cloth clothAmount = new Cloth();
+    int ragDollAmount = 0, currentEnergy = 17;
+
+    public int getMaterialCount() {
+        return materialCount;
+    }
+
+    public void setMaterialCount(int materialCount) {
+        this.materialCount = materialCount;
+    }
+
+    int materialCount = clothAmount.getClothCount();
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    double money = 50.0;
+
+    PhoneController phone = new PhoneController();
     @FXML
     private ImageView imageViewEnergy;
 
@@ -42,24 +77,42 @@ public class GameController {
     @FXML
     private Button buttonFridge;
 
+    @FXML
+    private ImageView imageViewCharacter;
+
     /*-------------------------------------Button Event--------------------------------------*/
 
     @FXML
-    void CraftMaterial(ActionEvent event) throws InterruptedException {
-        UseEnergy(ragDoll.energy);
-        ChangeEnergyBar();
-        ragDollAmount++;
-        wait(10000);
+    void CraftMaterial(ActionEvent event)  {
+        if (currentEnergy >= 1 && materialCount >= 1) {
+            UseEnergy(1);
+            UseMaterial(1);
+            ChangeEnergyBar();
+            ragDollAmount = ragDollAmount + 1;
+            System.out.println(currentEnergy + " " + ragDollAmount + " " + materialCount);
+            ChangePlayerLocal(600.0, 5.0);
+        }
+        else {
+            if (currentEnergy == 0) {
+                System.out.println("No energy!");
+            }
+            else {
+                System.out.println("No material!");
+            }
+        }
     }
 
     @FXML
     void OpenMiscMenu(ActionEvent event) {
-
+        ShipItem(10.0);
+        ChangePlayerLocal(87, 14);
+        System.out.println(money + " " + ragDollAmount);
     }
 
     @FXML
-    void OpenPhoneMenu(ActionEvent event) {
+    void OpenPhoneMenu(ActionEvent event) throws IOException {
 
+        OpenPhoneStage();
     }
 
     @FXML
@@ -69,15 +122,39 @@ public class GameController {
 
     @FXML
     void RestoreEnergyEat(ActionEvent event) {
-
+        RestoreEnergy(2);
+        ChangeEnergyBar();
+        ChangePlayerLocal(86.0, 121.0);
     }
 
     @FXML
     void RestoreEnergySleep(ActionEvent event) {
-
+        RestoreEnergy(5);
+        ChangeEnergyBar();
+        ChangePlayerLocal(760.0, 290.0);
     }
 
     /*----------------------------------------Functions------------------------------------*/
+
+    public void OpenPhoneStage() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("phone.fxml"));
+        Scene newScene;
+        try {
+            newScene = new Scene(loader.load());
+        } catch (IOException ex) {
+            return;
+        }
+        Stage inputStage = new Stage();
+        Stage primaryStage = (Stage) buttonPhone.getScene().getWindow();
+        inputStage.initOwner(primaryStage);
+        inputStage.setScene(newScene);
+        inputStage.showAndWait();
+
+
+        /*money = phone.getMoney();
+        materialCount = phone.getCurrentAmount();*/
+
+    }
 
     public void UseEnergy(int energyConsumption) {
         if (currentEnergy != 0) {
@@ -106,75 +183,145 @@ public class GameController {
         }
     }
 
+    public void ShipItem(double sellPrice) {
+        if (ragDollAmount > 0) {
+            ragDollAmount = ragDollAmount - 1;
+            money = money + sellPrice;
+        }
+        else {
+            System.out.println("Nothing to ship!");
+        }
+    }
+
     public void RestoreMaterial(int materialRestoration) {
         materialCount = materialCount + materialRestoration;
     }
 
-    /*--------------------------------------Show energybar---------------------------------*/
+    public void ChangePlayerLocal(double x, double y) {
+        imageViewCharacter.setLayoutX(x);
+        imageViewCharacter.setLayoutY(y);
+    }
 
-    public void ChangeEnergyBar() {
-        switch(currentEnergy) {
-            case 0:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy0.png"));
-                break;
-            case 1:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy1.png"));
-                break;
-            case 2:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy2.png"));
-                break;
-            case 3:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy3.png"));
-                break;
-            case 4:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy4.png"));
-                break;
-            case 5:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy5.png"));
-                break;
-            case 6:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy6.png"));
-                break;
-            case 7:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy7.png"));
-                break;
-            case 8:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy8.png"));
-                break;
-            case 9:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy9.png"));
-                break;
-            case 10:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy10.png"));
-                break;
-            case 11:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy11.png"));
-                break;
-            case 12:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy12.png"));
-                break;
-            case 13:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy13.png"));
-                break;
-            case 14:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy14.png"));
-                break;
-            case 15:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy15.png"));
-                break;
-            case 16:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy16.png"));
-                break;
-            case 17:
-                imageViewEnergy.setImage(new Image("src/sample/resources/images/energy17.png"));
-                break;
-            default:
-                System.out.println("Error: currentEnergy doesn't match asset ID");
+    /*public void UpdateMoney() {
+        double tempM = phone.getMoney();
+        if(!(money == tempM)) {
+            money = tempM;
+        }
+        else {
+            money = money;
         }
     }
 
-    /*----------------------------------------Variables------------------------------------*/
-    int ragDollAmount = 0, currentEnergy = 17, materialCount = 10;
-    Product ragDoll = new Product("Rag Doll", 1, 1, 2, 10.0);
+    public void UpdateCloth() {
+        int tempC = phone.getCurrentAmount();
+        if(!(materialCount == tempC)) {
+            materialCount = tempC;
+        }
+        else {
+            materialCount = materialCount;
+        }
+    }*/
+
+
+
+    /*--------------------------------------Show energybar---------------------------------*/
+
+    public void ChangeEnergyBar() {
+        File file;
+        Image image;
+        switch(currentEnergy) {
+            case 0:
+                file = new File("src/sample/resources/images/energy0.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 1:
+                file = new File("src/sample/resources/images/energy1.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 2:
+                file = new File("src/sample/resources/images/energy2.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 3:
+                file = new File("src/sample/resources/images/energy3.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 4:
+                file = new File("src/sample/resources/images/energy4.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 5:
+                file = new File("src/sample/resources/images/energy5.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 6:
+                file = new File("src/sample/resources/images/energy6.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 7:
+                file = new File("src/sample/resources/images/energy7.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 8:
+                file = new File("src/sample/resources/images/energy8.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 9:
+                file = new File("src/sample/resources/images/energy9.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 10:
+                file = new File("src/sample/resources/images/energy10.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 11:
+                file = new File("src/sample/resources/images/energy11.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 12:
+                file = new File("src/sample/resources/images/energy12.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 13:
+                file = new File("src/sample/resources/images/energy13.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 14:
+                file = new File("src/sample/resources/images/energy14.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 15:
+                file = new File("src/sample/resources/images/energy15.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            case 16:
+                file = new File("src/sample/resources/images/energy16.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+                break;
+            default:
+                file = new File("src/sample/resources/images/energy17.png");
+                image = new Image(file.toURI().toString());
+                imageViewEnergy.setImage(image);
+        }
+    }
+
+
 
 }
